@@ -1,3 +1,4 @@
+![Build Status](https://github.com/ka1te6/lab04/actions/workflows/build.yml/badge.svg)
 ## Laboratory work III
 
 Данная лабораторная работа посвещена изучению систем автоматизации сборки проекта на примере **CMake**
