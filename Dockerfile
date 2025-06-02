@@ -1,15 +1,27 @@
 FROM ubuntu:18.04
 
-RUN apt update && apt install -yy gcc g++ cmake
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    make \
+    wget
 
-COPY . /app
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.22.0/cmake-3.22.0-linux-x86_64.sh && \
+    chmod +x cmake-3.22.0-linux-x86_64.sh && \
+    ./cmake-3.22.0-linux-x86_64.sh --skip-license --prefix=/usr/local && \
+    rm cmake-3.22.0-linux-x86_64.sh
+
 WORKDIR /app
 
-RUN cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/app/install
-RUN cmake --build build
-RUN cmake --build build --target install
+COPY . .
 
-ENV LOG_PATH /home/logs/log.txt
+RUN cmake -S. -B_build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=_install
+RUN cmake --build _build
+RUN cmake --build _build --target install
+
+ENV LOG_PATH=/home/logs/log.txt
 VOLUME /home/logs
 
-ENTRYPOINT ["/app/install/bin/hello_world"]
+WORKDIR /app/_install/bin
+
+ENTRYPOINT ["./hello_world"]
