@@ -1,12 +1,12 @@
-name: CMake Build
+name: CMake Build and Docker Run
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -16,14 +16,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1
+      - name: Build Docker image
+        run: docker build -t logger .
 
-      - name: Create build directory
-        run: cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
+      - name: Prepare logs directory
+        run: mkdir -p logs
 
-      - name: Build
-        run: cmake --build _build
+      - name: Run Docker container with input
+        run: |
+          echo -e "text1\ntext2\ntext3\n" | docker run -i -v ${{ github.workspace }}/logs:/home/logs logger
 
-      - name: Install
-        run: cmake --build _build --target install
+      - name: Show log file contents
+        run: cat logs/log.txt
+
+      - name: Upload logs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: logs/log.txt
