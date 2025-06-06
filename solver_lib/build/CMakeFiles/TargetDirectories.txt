@@ -1,3 +1,0 @@
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/solver_lib/build/CMakeFiles/solver_lib.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/solver_lib/build/CMakeFiles/edit_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/solver_lib/build/CMakeFiles/rebuild_cache.dir
