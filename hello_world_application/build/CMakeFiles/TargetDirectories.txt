@@ -1,9 +1,0 @@
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/CMakeFiles/hello_world.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/CMakeFiles/edit_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/CMakeFiles/rebuild_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/build_formatter_ex/CMakeFiles/formatter_ex.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/build_formatter_ex/CMakeFiles/edit_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/build_formatter_ex/CMakeFiles/rebuild_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/build_formatter_ex/formatter_lib_build/CMakeFiles/formatter.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/build_formatter_ex/formatter_lib_build/CMakeFiles/edit_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/hello_world_application/build/build_formatter_ex/formatter_lib_build/CMakeFiles/rebuild_cache.dir
