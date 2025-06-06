@@ -1,6 +1,0 @@
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/formatter_ex_lib/build/CMakeFiles/formatter_ex.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/formatter_ex_lib/build/CMakeFiles/edit_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/formatter_ex_lib/build/CMakeFiles/rebuild_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/formatter_ex_lib/build/formatter_lib_build/CMakeFiles/formatter.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/formatter_ex_lib/build/formatter_lib_build/CMakeFiles/edit_cache.dir
-/home/ka1te/ka1te6/workspace/hw/lab03/lab03/formatter_ex_lib/build/formatter_lib_build/CMakeFiles/rebuild_cache.dir
