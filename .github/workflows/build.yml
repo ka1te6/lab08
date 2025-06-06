@@ -2,35 +2,56 @@ name: CMake Build and Docker Run
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:22.04
+      options: --privileged
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y \
+            build-essential \
+            cmake \
+            docker.io
+
       - name: Build Docker image
         run: docker build -t logger .
 
-      - name: Prepare logs directory
-        run: mkdir -p logs
+      - name: Create logs directory
+        run: mkdir -p ${{ github.workspace }}/logs
 
-      - name: Run Docker container with input
+      - name: Test logging functionality
         run: |
-          echo -e "text1\ntext2\ntext3\n" | docker run -i -v ${{ github.workspace }}/logs:/home/logs logger
+          echo -e "text1\ntext2\ntext3" > input.txt
+          docker run \
+            -v ${{ github.workspace }}/logs:/home/logs \
+            -v ${{ github.workspace }}/input.txt:/input.txt \
+            logger /bin/bash -c "/usr/local/bin/hello_world < /input.txt"
+          
+          echo "--- Log file contents ---"
+          cat ${{ github.workspace }}/logs/log.txt
 
-      - name: Show log file contents
-        run: cat logs/log.txt
+      - name: Verify log output
+        run: |
+          grep -q "text1" ${{ github.workspace }}/logs/log.txt && \
+          grep -q "text2" ${{ github.workspace }}/logs/log.txt && \
+          grep -q "text3" ${{ github.workspace }}/logs/log.txt || \
+          (echo "Log file doesn't contain expected content" && exit 1)
 
       - name: Upload logs artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: logs
-          path: logs/log.txt
+          name: test-logs
+          path: ${{ github.workspace }}/logs/log.txt
